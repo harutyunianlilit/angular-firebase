@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "cms-database-534d2"
+  },
+  "targets": {
+    "cms-database-534d2": {
+      "hosting": {
+        "cms-angular-firebase": [
+          "cms-database-534d2"
+        ]
+      }
+    }
+  }
+}
