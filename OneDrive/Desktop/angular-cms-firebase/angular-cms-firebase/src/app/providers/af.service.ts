@@ -11,7 +11,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
   providedIn: 'root'
 })
 export class AfService {
-  user$:  Observable<User>;
+  user$:  Observable<User | null | undefined>;
 
   constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore) {
     this.user$ = afAuth.authState.pipe(
@@ -49,7 +49,7 @@ export class AfService {
     } else {
 
       console.log("User is null");
-      return null;
+      return of (null);
 
     }
   }
