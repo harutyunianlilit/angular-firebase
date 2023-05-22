@@ -4,11 +4,16 @@ import { AppComponent } from './app.component';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PagesListComponent } from './pages-list/pages-list.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminGuard } from './guards/admin.guard';
+import { SubscriberGuard } from './guards/subscriber.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'pages', component: PagesListComponent },
+  { path: 'article', component: PagesListComponent, canActivate: [SubscriberGuard] },
+  { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
 ];
 
 @NgModule({

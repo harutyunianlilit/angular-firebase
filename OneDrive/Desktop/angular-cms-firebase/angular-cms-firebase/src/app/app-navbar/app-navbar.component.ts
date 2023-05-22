@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AfService } from '../providers/af.service';
 import { User } from '../providers/user';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css'],
+  selector: 'app-navbar',
+  templateUrl: './app-navbar.component.html',
+  styleUrls: ['./app-navbar.component.css']
 })
-export class LoginPageComponent implements OnInit {
+export class AppNavbarComponent {
   user: User | null = null;
 
   constructor(public AfService: AfService) {}
@@ -18,10 +18,5 @@ export class LoginPageComponent implements OnInit {
         this.user = user;
       }
     });
-  }
-
-  login() {
-    this.AfService.loginWithGoogle();
-    console.log('test');
   }
 }

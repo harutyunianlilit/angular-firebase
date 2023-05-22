@@ -1,0 +1,15 @@
+<a href="/home">Home Page</a>
+<a href="/login">Login</a>
+<a href="/article">Article Page</a>
+<a href="/admin">Admin</a>
+
+<div *ngIf="user">
+  <h3>Hello {{user.displayName}}</h3>
+  <img [src]="user.photoUrl" />
+  <button (click)="AfService.logout()">logout</button>
+</div>
+
+<div *ngIf="user">
+<p>Subscriber: {{ user.roles && user.roles.subscriber ? true : false }}</p>
+<p>Admin: {{ user.roles && user.roles.admin ? true : false }}</p>
+</div>
