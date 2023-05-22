@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Provider } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
+  CanActivate,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -13,10 +14,10 @@ import { tap, map, take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard {
+export class AdminGuard implements CanActivate {
   constructor(private af: AfService) {}
 
-  canActivateFn(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.af.user$.pipe(
       take(1),
       map((user) => user && user.roles && user.roles.admin ? true : false),
