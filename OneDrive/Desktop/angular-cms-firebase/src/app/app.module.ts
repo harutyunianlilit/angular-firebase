@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PagesListComponent } from './pages-list/pages-list.component';
-
-
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AppComponent } from './app.component';
@@ -17,6 +16,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminGuard } from './guards/admin.guard';
 import { SubscriberGuard } from './guards/subscriber.guard';
+import { MaterialModule } from './material.module';
+
+
 
 
 
@@ -29,7 +31,9 @@ import { SubscriberGuard } from './guards/subscriber.guard';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [AfService, AdminGuard, SubscriberGuard],
   bootstrap: [AppComponent],

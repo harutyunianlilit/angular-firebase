@@ -22,7 +22,7 @@ export class SubscriberGuard implements CanActivate {
       map((user) => user && user.roles && user.roles.admin ? true : false),
       tap(isSubscriber => {
         if (!isSubscriber) {
-          console.error('Access denied. Only admins are allowed.');
+          console.error('Access denied. Only subscribers are allowed.');
         }
       })
     );
