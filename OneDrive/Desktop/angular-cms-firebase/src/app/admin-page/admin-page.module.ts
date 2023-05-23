@@ -10,7 +10,6 @@ import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenusComponent } from './menus/menus.component';
-import { PostsComponent } from './posts/posts.component';
 import { FormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -24,7 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
-    DashboardComponent, AdminPageComponent, AppNavbarComponent, MenusComponent, PostsComponent
+    DashboardComponent, AdminPageComponent, AppNavbarComponent, MenusComponent
   ],
   imports: [
     CommonModule,
