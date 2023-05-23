@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminPageComponent } from './admin-page.component';
+import { MenusComponent } from './menus/menus.component';
+import { PostsComponent } from './posts/posts.component';
+
 
 
 const routes: Routes = [
@@ -17,8 +20,24 @@ const routes: Routes = [
       path: '',
       redirectTo: 'dashboard',
       pathMatch: "full"
+    },
+    {
+      path: 'menus',
+      component: MenusComponent,
+
+    },
+    {
+      path: 'posts',
+      component: PostsComponent,
+
+    },
+    {
+      path: '**',
+      redirectTo: 'dashboard',
+
     }
   ]
+
 
 }
 ];
