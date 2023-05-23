@@ -42,7 +42,7 @@ export class AfService {
         photoUrl: user.photoURL,
         roles: {
           subscriber: true,
-          admin: false
+          admin: true
         }
       };
       return userRef.set(data, { merge: true });

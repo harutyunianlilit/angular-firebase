@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button routerLink="/">Angular CMS</button>
+    <span class="example-spacer"></span>
+    <button mat-button routerLink="/home">Home Page</button>
+
+    <button mat-button routerLink="/article">Article Page</button>
+    <button mat-button routerLink="/admin">Admin</button>
+    <div *ngIf="!user">
+    <button mat-button (click)="AfService.loginWithGoogle()">Login</button>
+</div>
+<div *ngIf="user">
+
+  <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+
+    <span>Hello {{ user.displayName }}</span>
+    <img class ='profileImg' [src]="user.photoUrl" />
+  </button>
+  <mat-menu #menu="matMenu" xPosition="after" yPosition="below" overlapTrigger="false">
+    <button mat-menu-item disabled>
+      <mat-icon>account_circle</mat-icon>
+      <span>Account Settings</span>
+    </button>
+
+    <button mat-menu-item (click)="AfService.logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Log Out</span>
+    </button>
+  </mat-menu>
+
+
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<div *ngIf="user">
+  <p>Subscriber: {{ user.roles && user.roles.subscriber ? true : false }}</p>
+  <p>Admin: {{ user.roles && user.roles.admin ? true : false }}</p>
+</div>
