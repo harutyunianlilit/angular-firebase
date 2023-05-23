@@ -11,6 +11,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenusComponent } from './menus/menus.component';
 import { PostsComponent } from './posts/posts.component';
+import { FormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 
 
@@ -25,7 +33,13 @@ import { PostsComponent } from './posts/posts.component';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule,
+    MatPaginatorModule
 
 
   ],
