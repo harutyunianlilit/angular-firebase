@@ -41,4 +41,7 @@ export class MenusService {
   updateMenu(menuId: string, menu: Menu): Promise<void> {
     return this.menusCollection.doc(menuId).update(menu);
   }
+  editMenu(menuId: string, menu: Menu): Promise<void> {
+    return this.menusCollection.doc(menuId).update(menu);
+  }
 }
