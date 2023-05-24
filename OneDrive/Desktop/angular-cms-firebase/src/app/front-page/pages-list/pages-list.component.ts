@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 
 export class PagesListComponent implements OnInit {
   pagesObservable!: Observable<any[]>;
-
+  async: any;
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit(): void {

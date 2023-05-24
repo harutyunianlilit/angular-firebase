@@ -57,7 +57,8 @@ export class MenusComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
+
+      if (result ===  'true') {
         console.log('The dialog was closed' + menuId);
         this.deleteMenu(menuId);
       }

@@ -4,7 +4,7 @@ import { MaterialModule } from './material.module';
 import { AdminRoutingModule } from './admin-routing-module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminPageComponent } from './admin-page.component';
-import { AppNavbarComponent } from '../app-navbar/app-navbar.component';
+import { AppNavbarComponent } from '../front-page/app-navbar/app-navbar.component';
 import { MenusComponent } from './menus/menus.component';
 import { PostsComponent } from './posts/posts.component';
 import { FormsModule } from '@angular/forms';
@@ -13,15 +13,16 @@ import { EditMenuComponent } from './menus/edit-menu/edit-menu.component';
 import { EditPostComponent } from './posts/edit-post/edit-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
-    DashboardComponent, AdminPageComponent, AppNavbarComponent, MenusComponent, PostsComponent, ConfirmationDialogComponent, EditMenuComponent, EditPostComponent
+    DashboardComponent,
+    AdminPageComponent,
+    AppNavbarComponent,
+    MenusComponent,
+    PostsComponent,
+    ConfirmationDialogComponent,
+    EditMenuComponent,
+    EditPostComponent,
   ],
 
   imports: [
@@ -29,11 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-
-
-
+    ReactiveFormsModule,
   ],
-
 })
-export class AdminPageModule { }
+export class AdminPageModule {}

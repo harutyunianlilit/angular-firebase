@@ -35,6 +35,8 @@ export class MenusService {
   }
 
   deleteMenu(menuId: string): Promise<void> {
+    console.log(menuId);
+
     return this.menusCollection.doc(menuId).delete();
   }
 

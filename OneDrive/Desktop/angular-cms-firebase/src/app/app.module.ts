@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { PagesListComponent } from './pages-list/pages-list.component';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AppComponent } from './app.component';
@@ -12,7 +11,6 @@ import { AfService } from './providers/af.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
-import { HomePageComponent } from './home-page/home-page.component';
 
 import { AdminGuard } from './guards/admin.guard';
 import { SubscriberGuard } from './guards/subscriber.guard';
@@ -25,7 +23,7 @@ import { PostsService } from './service/posts/posts.service';
 
 
 @NgModule({
-  declarations: [AppComponent, PagesListComponent, LoginPageComponent, HomePageComponent],
+  declarations: [AppComponent, LoginPageComponent],
   imports: [
     CommonModule,
     BrowserModule,
