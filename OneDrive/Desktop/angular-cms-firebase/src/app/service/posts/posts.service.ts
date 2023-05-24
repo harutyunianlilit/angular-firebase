@@ -5,21 +5,20 @@ import { map } from 'rxjs/operators';
 
 export interface Post {
   title: string;
-  url: string;
+  menu_id: string;
+  content: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-  private PostsCollection: AngularFirestoreCollection<Post>;
+  private readonly postsCollection = this.firestore.collection<Post>('posts');
 
-  constructor(private afs: AngularFirestore) {
-    this.PostsCollection = this.afs.collection<Post>('Posts');
-  }
+  constructor(private firestore: AngularFirestore) {}
 
   getPosts(): Observable<Post[]> {
-    return this.PostsCollection.snapshotChanges().pipe(
+    return this.postsCollection.snapshotChanges().pipe(
       map((actions: DocumentChangeAction<Post>[]) => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Post;
@@ -30,15 +29,15 @@ export class PostsService {
     );
   }
 
-  addPost(Post: Post): Promise<any> {
-    return this.PostsCollection.add(Post);
+  addPost(post: Post): Promise<any> {
+    return this.postsCollection.add(post);
   }
 
-  deletePost(PostId: string): Promise<void> {
-    return this.PostsCollection.doc(PostId).delete();
+  deletePost(postId: string): Promise<void> {
+    return this.postsCollection.doc(postId).delete();
   }
 
-  updatePost(PostId: string, Post: Post): Promise<void> {
-    return this.PostsCollection.doc(PostId).update(Post);
+  updatePost(postId: string, post: Post): Promise<void> {
+    return this.postsCollection.doc(postId).update(post);
   }
 }
