@@ -3,3 +3,14 @@
 body {
   margin: 0;
 }
+
+img {
+  max-width: 100%;
+}
+
+.cards{
+  background: #DBE6F6;
+background: -webkit-linear-gradient(to right, #C5796D, #DBE6F6);
+background: linear-gradient(to right, #C5796D, #DBE6F6); 
+
+}

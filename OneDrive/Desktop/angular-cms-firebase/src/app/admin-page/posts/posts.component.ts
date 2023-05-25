@@ -78,7 +78,7 @@ export class PostsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
+      if (result === 'true') {
         console.log('The dialog was closed' + postId);
         this.deletePost(postId);
       }
