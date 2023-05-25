@@ -10,7 +10,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     loadChildren: () =>
       import('./front-page/front-page.module').then((m) => m.FrontPageModule),
   },
@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin-page/admin-page.module').then((m) => m.AdminPageModule),
     canActivate: [AdminGuard],
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   },
 ];
 

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, QueryFn } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import { from } from 'rxjs';
 
 export interface Post {
   title: string;
@@ -28,6 +31,20 @@ export class PostsService {
       })
     );
   }
+
+  getConditionalPosts(field: string, condition: any, value: string): Observable<Post[]> {
+    const query = this.postsCollection.ref.where(field, condition, value).get();
+    return from(query).pipe(
+      map((snapshot: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>) => {
+        return snapshot.docs.map(doc => {
+          const data = doc.data() as Post;
+          const id = doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+  }
+
 
   addPost(post: Post): Promise<any> {
     return this.postsCollection.add(post);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, QueryFn } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -23,6 +23,20 @@ export class MenusService {
       map((actions: DocumentChangeAction<Menu>[]) => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Menu;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+  }
+
+  getConditionalMenus(field: string, condition: any, value: string): Observable<Menu[]> {
+    const queryFn: QueryFn = ref => ref.where(field, condition, value);
+
+    return this.afs.collection<Menu>('menus', queryFn).snapshotChanges().pipe(
+      map((actions: DocumentChangeAction<Menu>[]) => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
           const id = a.payload.doc.id;
           return { id, ...data };
         });

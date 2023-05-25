@@ -15,7 +15,8 @@ import { PagesComponent } from './pages/pages.component';
     HomePageComponent,
     FrontPageComponent,
     FrontNavbarComponent,
-    PagesComponent
+    PagesComponent,
+
 
   ],
 
