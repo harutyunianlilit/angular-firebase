@@ -17,10 +17,10 @@ export class PagesComponent implements OnInit {
     private menus: MenusService,
     private posts: PostsService
   ) {
-    //console.log("Constructor executed!");
+    console.log("Constructor executed!");
     this.route.params.subscribe(params => {
-      console.log(params);
-      this.menus.getConditionalMenus('url', '=', params['url']).subscribe(menus => {
+      console.log(params, );
+      this.menus.getConditionalMenus('url', '==', params['url']).subscribe(menus => {
         console.log(menus);
         if (menus.length > 0) {
           this.menu = menus[0];
@@ -31,6 +31,7 @@ export class PagesComponent implements OnInit {
         }
       });
     });
+
   }
 
   ngOnInit(): void {
