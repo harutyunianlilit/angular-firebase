@@ -24,7 +24,7 @@ export class PagesComponent implements OnInit {
         console.log(menus);
         if (menus.length > 0) {
           this.menu = menus[0];
-          this.posts.getConditionalPosts('menu_id', '=', this.menu.id).subscribe(posts => {
+          this.posts.getConditionalPosts('menu_id', '==', this.menu.id).subscribe(posts => {
             console.log(posts);
             this.postsList = posts;
           });

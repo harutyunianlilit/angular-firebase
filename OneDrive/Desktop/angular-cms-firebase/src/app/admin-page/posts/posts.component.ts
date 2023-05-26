@@ -34,7 +34,7 @@ export class PostsComponent implements OnInit {
 
 
     this.postForm = this.fb.group({
-      title: ['', Validators.required],
+      title: ['', [Validators.required], { updateOn: 'blur' }],
       menu_id: ['', Validators.required],
       content: ['', Validators.required]
 
