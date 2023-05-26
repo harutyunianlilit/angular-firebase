@@ -22,7 +22,6 @@ export class FrontNavbarComponent {
     });
     this.menus.getMenus().subscribe((menus) => {
       this.menusList = menus;
-  
     });
   }
 }

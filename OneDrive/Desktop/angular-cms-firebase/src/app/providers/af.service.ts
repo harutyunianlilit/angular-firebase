@@ -5,17 +5,20 @@ import firebase from 'firebase/compat/app';
 import { User } from './user';
 
 import { switchMap } from 'rxjs/operators';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AfService {
-  user$:  Observable<User | null | undefined>;
+  user$: Observable<User | null | undefined>;
 
   constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore) {
     this.user$ = afAuth.authState.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
@@ -34,7 +37,9 @@ export class AfService {
 
   updateUser(user: firebase.User | null) {
     if (user) {
-      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+      const userRef: AngularFirestoreDocument<User> = this.afs.doc(
+        `users/${user.uid}`
+      );
       const data: User = {
         uid: user.uid,
         email: user.email,
@@ -42,18 +47,16 @@ export class AfService {
         photoUrl: user.photoURL,
         roles: {
           subscriber: true,
-          admin: true
-        }
+          admin: true,
+        },
       };
       return userRef.set(data, { merge: true });
     } else {
-
-      console.log("User is null");
-      return of (null);
-
+      console.log('User is null');
+      return of(null);
     }
   }
-   logout() {
+  logout() {
     this.afAuth.signOut();
   }
 }

@@ -1,3 +1,12 @@
 .pages-list {
   margin-top: 100px;
 }
+
+.centered-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 40px;
+
+}

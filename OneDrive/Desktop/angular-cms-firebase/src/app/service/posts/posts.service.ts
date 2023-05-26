@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, QueryFn } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  DocumentChangeAction,
+  QueryFn,
+} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
@@ -13,7 +18,7 @@ export interface Post {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostsService {
   private readonly postsCollection = this.firestore.collection<Post>('posts');
@@ -23,7 +28,7 @@ export class PostsService {
   getPosts(): Observable<Post[]> {
     return this.postsCollection.snapshotChanges().pipe(
       map((actions: DocumentChangeAction<Post>[]) => {
-        return actions.map(a => {
+        return actions.map((a) => {
           const data = a.payload.doc.data() as Post;
           const id = a.payload.doc.id;
           return { id, ...data };
@@ -32,19 +37,26 @@ export class PostsService {
     );
   }
 
-  getConditionalPosts(field: string, condition: any, value: string): Observable<Post[]> {
+  getConditionalPosts(
+    field: string,
+    condition: any,
+    value: string
+  ): Observable<Post[]> {
     const query = this.postsCollection.ref.where(field, condition, value).get();
     return from(query).pipe(
-      map((snapshot: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>) => {
-        return snapshot.docs.map(doc => {
-          const data = doc.data() as Post;
-          const id = doc.id;
-          return { id, ...data };
-        });
-      })
+      map(
+        (
+          snapshot: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>
+        ) => {
+          return snapshot.docs.map((doc) => {
+            const data = doc.data() as Post;
+            const id = doc.id;
+            return { id, ...data };
+          });
+        }
+      )
     );
   }
-
 
   addPost(post: Post): Promise<any> {
     return this.postsCollection.add(post);

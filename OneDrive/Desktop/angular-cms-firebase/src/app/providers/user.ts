@@ -3,11 +3,10 @@ export interface User {
   email: string | null;
   displayName: string | null;
   photoUrl: string | null;
-  roles: Roles
+  roles: Roles;
 }
 
-export interface Roles{
-
+export interface Roles {
   subscriber?: boolean;
   admin?: boolean;
 }

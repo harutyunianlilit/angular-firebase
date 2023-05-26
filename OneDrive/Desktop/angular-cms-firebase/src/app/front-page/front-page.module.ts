@@ -4,10 +4,9 @@ import { PagesListComponent } from './pages-list/pages-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FrontRoutingModule } from './front-routing.module';
 import { FrontPageComponent } from './front-page.component';
-import { FrontNavbarComponent  } from './app-navbar/app-navbar.component';
+import { FrontNavbarComponent } from './app-navbar/app-navbar.component';
 import { MaterialModule } from '../material.module';
 import { PagesComponent } from './pages/pages.component';
-
 
 @NgModule({
   declarations: [
@@ -16,17 +15,8 @@ import { PagesComponent } from './pages/pages.component';
     FrontPageComponent,
     FrontNavbarComponent,
     PagesComponent,
-
-
   ],
 
-  imports: [
-    FrontRoutingModule,
-    CommonModule,
-    MaterialModule
-
-
-
-  ],
+  imports: [FrontRoutingModule, CommonModule, MaterialModule],
 })
 export class FrontPageModule {}

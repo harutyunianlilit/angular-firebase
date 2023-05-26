@@ -6,11 +6,13 @@ body {
 
 img {
   max-width: 100%;
+  object-fit: cover;
+  height: 200px
 }
 
 .cards{
   background: #DBE6F6;
 background: -webkit-linear-gradient(to right, #C5796D, #DBE6F6);
-background: linear-gradient(to right, #C5796D, #DBE6F6); 
+background: linear-gradient(to right, #C5796D, #DBE6F6);
 
 }

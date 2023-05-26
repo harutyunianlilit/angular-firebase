@@ -13,7 +13,7 @@ export class LoginPageComponent implements OnInit {
   constructor(public AfService: AfService) {}
 
   ngOnInit() {
-    this.AfService.user$.subscribe(user => {
+    this.AfService.user$.subscribe((user) => {
       if (user) {
         this.user = user;
       }
